@@ -1,6 +1,6 @@
 # Dokploy MCP Server
 
-[![npm version](https://img.shields.io/npm/v/@ahdev/dokploy-mcp.svg)](https://www.npmjs.com/package/@ahdev/dokploy-mcp) [<img alt="Install in VS Code (bun)" src="https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install%20Dokploy%20MCP&color=0098FF">](https://insiders.vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%7B%22name%22%3A%22dokploy-mcp%22%2C%22command%22%3A%22bunx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40ahdev%2Fdokploy-mcp%40latest%22%5D%7D)
+[![npm version](https://img.shields.io/npm/v/nd-dokploy-mcp.svg)](https://www.npmjs.com/package/nd-dokploy-mcp) [<img alt="Install in VS Code (bun)" src="https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install%20Dokploy%20MCP&color=0098FF">](https://insiders.vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%7B%22name%22%3A%22dokploy-mcp%22%2C%22command%22%3A%22bunx%22%2C%22args%22%3A%5B%22-y%22%2C%22nd-dokploy-mcp%40latest%22%5D%7D)
 
 Dokploy MCP Server exposes Dokploy functionalities as tools consumable via the Model Context Protocol (MCP). It allows MCP-compatible clients (e.g., AI models, other applications) to interact with your Dokploy server programmatically.
 
@@ -33,7 +33,7 @@ Add this to your Cursor `~/.cursor/mcp.json` file. You may also install in a spe
   "mcpServers": {
     "dokploy-mcp": {
       "command": "bunx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -51,7 +51,7 @@ Add this to your Cursor `~/.cursor/mcp.json` file. You may also install in a spe
   "mcpServers": {
     "dokploy-mcp": {
       "command": "npx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -71,7 +71,7 @@ Add this to your Cursor `~/.cursor/mcp.json` file. You may also install in a spe
   "mcpServers": {
     "dokploy-mcp": {
       "command": "deno",
-      "args": ["run", "--allow-env", "--allow-net", "npm:@ahdev/dokploy-mcp"],
+      "args": ["run", "--allow-env", "--allow-net", "npm:nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -92,7 +92,7 @@ Add this to your Windsurf MCP config file. See [Windsurf MCP docs](https://docs.
   "mcpServers": {
     "dokploy-mcp": {
       "command": "bunx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -114,7 +114,7 @@ Add this to your VS Code MCP config file. See [VS Code MCP docs](https://code.vi
   "servers": {
     "dokploy-mcp": {
       "command": "bunx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -132,7 +132,7 @@ Add this to your VS Code MCP config file. See [VS Code MCP docs](https://code.vi
   "servers": {
     "dokploy-mcp": {
       "command": "npx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -154,7 +154,7 @@ Add this to your Zed `settings.json`. See [Zed Context Server docs](https://zed.
     "dokploy-mcp": {
       "command": {
         "path": "npx",
-        "args": ["-y", "@ahdev/dokploy-mcp"]
+        "args": ["-y", "nd-dokploy-mcp"]
       },
       "settings": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
@@ -174,7 +174,7 @@ Add this to your Claude Desktop `claude_desktop_config.json` file. See [Claude D
   "mcpServers": {
     "dokploy-mcp": {
       "command": "bunx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -193,7 +193,7 @@ Open the "Settings" page of the app, navigate to "Plugins," and enter the follow
   "mcpServers": {
     "dokploy-mcp": {
       "command": "bunx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -286,7 +286,7 @@ The configuration on Windows is slightly different compared to Linux or macOS. U
   "mcpServers": {
     "dokploy-mcp": {
       "command": "cmd",
-      "args": ["/c", "bunx", "-y", "@ahdev/dokploy-mcp"],
+      "args": ["/c", "bunx", "-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -318,7 +318,7 @@ The default mode uses stdio for direct process communication, ideal for desktop 
 
 ```bash
 # Run with stdio (default)
-bunx -y @ahdev/dokploy-mcp
+bunx -y nd-dokploy-mcp
 # or
 bun run start:stdio
 ```
@@ -334,9 +334,9 @@ Modern HTTP mode exposes the server via HTTP/HTTPS supporting **both modern and 
 # Run with HTTP mode
 bun run start:http
 # or
-bunx -y @ahdev/dokploy-mcp --http
+bunx -y nd-dokploy-mcp --http
 # or via environment variable
-MCP_TRANSPORT=http bunx -y @ahdev/dokploy-mcp
+MCP_TRANSPORT=http bunx -y nd-dokploy-mcp
 ```
 
 **Modern Streamable HTTP Endpoints:**
@@ -460,7 +460,7 @@ You can control which tools are loaded by the MCP server using the `DOKPLOY_ENAB
   "mcpServers": {
     "dokploy-mcp": {
       "command": "npx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token",
@@ -491,7 +491,7 @@ You can lock an MCP instance to a specific project using the `DOKPLOY_LOCKED_PRO
   "mcpServers": {
     "dokploy-mcp-project-a": {
       "command": "npx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token",
@@ -523,7 +523,7 @@ You can lock an MCP instance to a specific project using the `DOKPLOY_LOCKED_PRO
   "mcpServers": {
     "dokploy-mcp-team-backend": {
       "command": "npx",
-      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "args": ["-y", "nd-dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token",
@@ -587,7 +587,7 @@ bun run build
 ### Testing with MCP Inspector
 
 ```bash
-npx -y @modelcontextprotocol/inspector bunx @ahdev/dokploy-mcp
+npx -y @modelcontextprotocol/inspector bunx nd-dokploy-mcp
 ```
 
 ### Documentation
@@ -601,9 +601,9 @@ npx -y @modelcontextprotocol/inspector bunx @ahdev/dokploy-mcp
 
 1. Try adding `@latest` to the package name.
 
-2. Use **Bun** for the best performance: `bunx -y @ahdev/dokploy-mcp@latest`
+2. Use **Bun** for the best performance: `bunx -y nd-dokploy-mcp@latest`
 
-3. For Node.js environments: `npx -y @ahdev/dokploy-mcp@latest`
+3. For Node.js environments: `npx -y nd-dokploy-mcp@latest`
 
 4. Verify your `DOKPLOY_URL` and `DOKPLOY_API_KEY` environment variables are correctly set.
 

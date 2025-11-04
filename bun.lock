@@ -2,7 +2,7 @@
   "lockfileVersion": 1,
   "workspaces": {
     "": {
-      "name": "@ahdev/dokploy-mcp",
+      "name": "nd-dokploy-mcp",
       "dependencies": {
         "@modelcontextprotocol/sdk": "^1.12.0",
         "axios": "^1.9.0",
