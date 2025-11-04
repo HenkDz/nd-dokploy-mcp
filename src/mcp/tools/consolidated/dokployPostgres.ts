@@ -1,6 +1,7 @@
 import { z } from "zod";
 import { ResponseFormatter } from "../../../utils/responseFormatter.js";
 import { createTool } from "../toolFactory.js";
+import { enforceProjectLock } from "../../../utils/projectLockEnforcer.js";
 
 // Import all individual PostgreSQL tool schemas for reuse
 import { postgresChangeStatus } from "../postgres/postgresChangeStatus.js";
@@ -56,6 +57,12 @@ export const dokployPostgres = createTool({
   },
   handler: async (input) => {
     const { action, params = {} } = input;
+
+    // Enforce project lock restrictions before executing the action
+    const lockError = await enforceProjectLock(params);
+    if (lockError) {
+      return lockError;
+    }
 
     // Map actions to their corresponding tool handlers
     const actionMap: Record<string, any> = {
