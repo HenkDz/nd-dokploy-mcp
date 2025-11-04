@@ -1,10 +1,18 @@
 # Dokploy MCP Server
 
-[![npm version](https://img.shields.io/npm/v/@ahdev/dokploy-mcp.svg)](https://www.npmjs.com/package/@ahdev/dokploy-mcp) [<img alt="Install in VS Code (npx)" src="https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install%20Dokploy%20MCP&color=0098FF">](https://insiders.vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%7B%22name%22%3A%22dokploy-mcp%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40ahdev%2Fdokploy-mcp%40latest%22%5D%7D)
+[![npm version](https://img.shields.io/npm/v/@ahdev/dokploy-mcp.svg)](https://www.npmjs.com/package/@ahdev/dokploy-mcp) [<img alt="Install in VS Code (bun)" src="https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install%20Dokploy%20MCP&color=0098FF">](https://insiders.vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%7B%22name%22%3A%22dokploy-mcp%22%2C%22command%22%3A%22bunx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40ahdev%2Fdokploy-mcp%40latest%22%5D%7D)
 
 Dokploy MCP Server exposes Dokploy functionalities as tools consumable via the Model Context Protocol (MCP). It allows MCP-compatible clients (e.g., AI models, other applications) to interact with your Dokploy server programmatically.
 
-This server focuses exclusively on **tools** for direct Dokploy API operations, providing a clean and efficient interface for project and application management.
+This server features a **consolidated architecture** with only **4 powerful tools** that cover all 67+ Dokploy API operations, providing a clean and efficient interface for infrastructure management.
+
+## ✨ Key Features
+
+- **🚀 Consolidated Architecture**: 4 powerful tools covering all Dokploy operations
+- **🔒 Project Locking**: Lock MCP instances to specific projects for multi-tenant setups
+- **🎯 Tool Filtering**: Load only the tools you need for specialized MCP instances
+- **⚡ Bun Optimized**: Built and optimized for the high-performance Bun runtime
+- **🌐 Multi-Transport**: Support for both stdio and HTTP transport modes
 
 ## 🛠️ Getting Started
 
@@ -24,7 +32,7 @@ Add this to your Cursor `~/.cursor/mcp.json` file. You may also install in a spe
 {
   "mcpServers": {
     "dokploy-mcp": {
-      "command": "npx",
+      "command": "bunx",
       "args": ["-y", "@ahdev/dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
@@ -36,13 +44,13 @@ Add this to your Cursor `~/.cursor/mcp.json` file. You may also install in a spe
 ```
 
 <details>
-<summary>Alternative: Use Bun</summary>
+<summary>Alternative: Use npx</summary>
 
 ```json
 {
   "mcpServers": {
     "dokploy-mcp": {
-      "command": "bunx",
+      "command": "npx",
       "args": ["-y", "@ahdev/dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
@@ -83,7 +91,7 @@ Add this to your Windsurf MCP config file. See [Windsurf MCP docs](https://docs.
 {
   "mcpServers": {
     "dokploy-mcp": {
-      "command": "npx",
+      "command": "bunx",
       "args": ["-y", "@ahdev/dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
@@ -96,8 +104,8 @@ Add this to your Windsurf MCP config file. See [Windsurf MCP docs](https://docs.
 
 ### Install in VS Code
 
-[<img alt="Install in VS Code (npx)" src="https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install%20Dokploy%20MCP&color=0098FF">](https://insiders.vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%7B%22name%22%3A%22dokploy-mcp%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40ahdev%2Fdokploy-mcp%40latest%22%5D%7D)
-[<img alt="Install in VS Code Insiders (npx)" src="https://img.shields.io/badge/VS_Code_Insiders-VS_Code_Insiders?style=flat-square&label=Install%20Dokploy%20MCP&color=24bfa5">](https://insiders.vscode.dev/redirect?url=vscode-insiders%3Amcp%2Finstall%3F%7B%22name%22%3A%22dokploy-mcp%22%2C%22command%22%3A%22npx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40ahdev%2Fdokploy-mcp%40latest%22%5D%7D)
+[<img alt="Install in VS Code (bun)" src="https://img.shields.io/badge/VS_Code-VS_Code?style=flat-square&label=Install%20Dokploy%20MCP&color=0098FF">](https://insiders.vscode.dev/redirect?url=vscode%3Amcp%2Finstall%3F%7B%22name%22%3A%22dokploy-mcp%22%2C%22command%22%3A%22bunx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40ahdev%2Fdokploy-mcp%40latest%22%5D%7D)
+[<img alt="Install in VS Code Insiders (bun)" src="https://img.shields.io/badge/VS_Code_Insiders-VS_Code_Insiders?style=flat-square&label=Install%20Dokploy%20MCP&color=24bfa5">](https://insiders.vscode.dev/redirect?url=vscode-insiders%3Amcp%2Finstall%3F%7B%22name%22%3A%22dokploy-mcp%22%2C%22command%22%3A%22bunx%22%2C%22args%22%3A%5B%22-y%22%2C%22%40ahdev%2Fdokploy-mcp%40latest%22%5D%7D)
 
 Add this to your VS Code MCP config file. See [VS Code MCP docs](https://code.visualstudio.com/docs/copilot/chat/mcp-servers) for more info.
 
@@ -105,7 +113,24 @@ Add this to your VS Code MCP config file. See [VS Code MCP docs](https://code.vi
 {
   "servers": {
     "dokploy-mcp": {
-      "type": "stdio",
+      "command": "bunx",
+      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "env": {
+        "DOKPLOY_URL": "https://your-dokploy-server.com/api",
+        "DOKPLOY_API_KEY": "your-dokploy-api-token"
+      }
+    }
+  }
+}
+```
+
+<details>
+<summary>Alternative: Use npx</summary>
+
+```json
+{
+  "servers": {
+    "dokploy-mcp": {
       "command": "npx",
       "args": ["-y", "@ahdev/dokploy-mcp"],
       "env": {
@@ -116,6 +141,8 @@ Add this to your VS Code MCP config file. See [VS Code MCP docs](https://code.vi
   }
 }
 ```
+
+</details>
 
 ### Install in Zed
 
@@ -146,7 +173,7 @@ Add this to your Claude Desktop `claude_desktop_config.json` file. See [Claude D
 {
   "mcpServers": {
     "dokploy-mcp": {
-      "command": "npx",
+      "command": "bunx",
       "args": ["-y", "@ahdev/dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
@@ -165,7 +192,7 @@ Open the "Settings" page of the app, navigate to "Plugins," and enter the follow
 {
   "mcpServers": {
     "dokploy-mcp": {
-      "command": "npx",
+      "command": "bunx",
       "args": ["-y", "@ahdev/dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
@@ -180,7 +207,7 @@ Open the "Settings" page of the app, navigate to "Plugins," and enter the follow
 
 The Docker container supports both **stdio** and **HTTP** transport modes, making it flexible for different deployment scenarios.
 
-1.  **Build the Docker Image:**
+1. **Build the Docker Image:**
 
     ```bash
     git clone https://github.com/Dokploy/mcp.git
@@ -188,7 +215,7 @@ The Docker container supports both **stdio** and **HTTP** transport modes, makin
     docker build -t dokploy-mcp .
     ```
 
-2.  **Manual Docker Commands:**
+2. **Manual Docker Commands:**
 
     **Stdio Mode (for MCP clients):**
 
@@ -210,7 +237,7 @@ The Docker container supports both **stdio** and **HTTP** transport modes, makin
       dokploy-mcp
     ```
 
-3.  **Docker Compose:**
+3. **Docker Compose:**
 
     Use the provided `docker-compose.yml` for production deployments:
 
@@ -222,7 +249,7 @@ The Docker container supports both **stdio** and **HTTP** transport modes, makin
     docker-compose logs -f dokploy-mcp-http
     ```
 
-4.  **MCP Client Configuration:**
+4. **MCP Client Configuration:**
 
     **For stdio mode (Claude Desktop, VS Code, etc.):**
 
@@ -259,7 +286,7 @@ The configuration on Windows is slightly different compared to Linux or macOS. U
   "mcpServers": {
     "dokploy-mcp": {
       "command": "cmd",
-      "args": ["/c", "npx", "-y", "@ahdev/dokploy-mcp"],
+      "args": ["/c", "bunx", "-y", "@ahdev/dokploy-mcp"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
         "DOKPLOY_API_KEY": "your-dokploy-api-token"
@@ -276,7 +303,7 @@ The configuration on Windows is slightly different compared to Linux or macOS. U
 - `DOKPLOY_URL`: Your Dokploy server API URL (required)
 - `DOKPLOY_API_KEY`: Your Dokploy API authentication token (required)
 
-#### Optional - Tool and Project Scope Control
+#### Optional - Advanced Configuration
 
 - `DOKPLOY_ENABLED_TOOLS`: Comma-separated list of consolidated tools to enable (e.g., `dokploy_application,dokploy_postgres`). If not set or empty, all tools will be loaded. Available tools: `dokploy_application`, `dokploy_postgres`, `dokploy_mysql`, `dokploy_project`.
 - `DOKPLOY_LOCKED_PROJECT_ID`: Lock the MCP instance to a specific project ID. When set, all operations will be restricted to this project, and the server will validate the project exists on startup. Any attempts to access different projects will be rejected.
@@ -291,9 +318,9 @@ The default mode uses stdio for direct process communication, ideal for desktop 
 
 ```bash
 # Run with stdio (default)
-npx -y @ahdev/dokploy-mcp
+bunx -y @ahdev/dokploy-mcp
 # or
-npm run start:stdio
+bun run start:stdio
 ```
 
 ### HTTP Mode (Streamable HTTP + Legacy SSE)
@@ -305,11 +332,11 @@ Modern HTTP mode exposes the server via HTTP/HTTPS supporting **both modern and 
 
 ```bash
 # Run with HTTP mode
-npm run start:http
+bun run start:http
 # or
-npx -y @ahdev/dokploy-mcp --http
+bunx -y @ahdev/dokploy-mcp --http
 # or via environment variable
-MCP_TRANSPORT=http npx -y @ahdev/dokploy-mcp
+MCP_TRANSPORT=http bunx -y @ahdev/dokploy-mcp
 ```
 
 **Modern Streamable HTTP Endpoints:**
@@ -343,65 +370,80 @@ For detailed transport mode documentation and client examples, refer to the conf
 
 ## 📚 Available Tools
 
-This MCP server provides **67 tools** organized into five main categories:
+This MCP server provides **4 consolidated tools** that cover all 67+ Dokploy API operations with a clean, unified interface:
 
-### 🗂️ Project Management (6 tools)
+### 🗂️ dokploy_project (6 actions)
 
-- `project-all` - List all projects
-- `project-one` - Get project by ID
-- `project-create` - Create new project
-- `project-update` - Update project configuration
-- `project-duplicate` - Duplicate project with optional service selection
-- `project-remove` - Delete project
+**Project Management Operations:**
 
-### 🚀 Application Management (26 tools)
+- `list` - List all projects
+- `get` - Get specific project details
+- `create` - Create new project
+- `update` - Update project configuration
+- `remove` - Delete project
+- `duplicate` - Duplicate project with services
 
-**Core Operations:**
-- `application-one`, `application-create`, `application-update`, `application-delete`
-- `application-deploy`, `application-redeploy`, `application-start`, `application-stop`, `application-reload`
-- `application-move`, `application-markRunning`, `application-cancelDeployment`
+### 🚀 dokploy_application (35 actions)
 
-**Git Providers:**
-- `application-saveGithubProvider`, `application-saveGitlabProvider`, `application-saveBitbucketProvider`
-- `application-saveGiteaProvider`, `application-saveGitProvider`, `application-disconnectGitProvider`
+**Application & Domain Management:**
 
-**Configuration:**
-- `application-saveBuildType`, `application-saveEnvironment`, `application-saveDockerProvider`
-- `application-readAppMonitoring`, `application-readTraefikConfig`, `application-updateTraefikConfig`
-- `application-refreshToken`, `application-cleanQueues`
+**Core Application Operations:**
 
-### 🌐 Domain Management (9 tools)
+- `create`, `get`, `update`, `delete`
+- `deploy`, `redeploy`, `start`, `stop`, `reload`
+- `move`, `markRunning`, `cancelDeployment`, `cleanQueues`
 
-- `domain-byApplicationId` - List domains by application ID
-- `domain-byComposeId` - List domains by compose service ID
-- `domain-one` - Get domain by ID
-- `domain-create` - Create domain (application/compose/preview)
-- `domain-update` - Update domain configuration
-- `domain-delete` - Delete domain
-- `domain-validateDomain` - Validate domain DNS/target
-- `domain-generateDomain` - Suggest a domain for an app
-- `domain-canGenerateTraefikMeDomains` - Check Traefik.me availability on a server
+**Git Provider Integration:**
 
-### 🐘 PostgreSQL Database Management (13 tools)
+- `saveGithubProvider`, `saveGitlabProvider`, `saveBitbucketProvider`
+- `saveGiteaProvider`, `saveGitProvider`, `disconnectGitProvider`
 
-**Core Operations:**
-- `postgres-create`, `postgres-one`, `postgres-update`, `postgres-remove`, `postgres-move`
-- `postgres-deploy`, `postgres-start`, `postgres-stop`, `postgres-reload`, `postgres-rebuild`
+**Configuration Management:**
 
-**Configuration:**
-- `postgres-changeStatus`, `postgres-saveExternalPort`, `postgres-saveEnvironment`
+- `saveBuildType`, `saveDockerProvider`, `saveEnvironment`
+- `readAppMonitoring`, `readTraefikConfig`, `updateTraefikConfig`
+- `refreshToken`
 
-### 🐬 MySQL Database Management (13 tools)
+**Domain Management:**
 
-**Core Operations:**
-- `mysql-create`, `mysql-one`, `mysql-update`, `mysql-remove`, `mysql-move`
-- `mysql-deploy`, `mysql-start`, `mysql-stop`, `mysql-reload`, `mysql-rebuild`
+- `domainCreate`, `domainGet`, `domainUpdate`, `domainDelete`
+- `domainByApplicationId`, `domainByComposeId`, `domainGenerateDomain`
+- `domainValidate`, `domainCanGenerateTraefikMeDomains`
 
-**Configuration:**
-- `mysql-changeStatus`, `mysql-saveExternalPort`, `mysql-saveEnvironment`
+### 🐘 dokploy_postgres (13 actions)
+
+**PostgreSQL Database Management:**
+
+- `create`, `get`, `update`, `remove`, `move`
+- `deploy`, `start`, `stop`, `reload`, `rebuild`
+- `changeStatus`, `saveExternalPort`, `saveEnvironment`
+
+### 🐬 dokploy_mysql (13 actions)
+
+**MySQL Database Management:**
+
+- `create`, `get`, `update`, `remove`, `move`
+- `deploy`, `start`, `stop`, `reload`, `rebuild`
+- `changeStatus`, `saveExternalPort`, `saveEnvironment`
+
+### 🔧 Tool Architecture
+
+Each consolidated tool follows this pattern:
+
+```json
+{
+  "tool": "dokploy_application",
+  "action": "deploy",
+  "params": {
+    "applicationId": "app-123",
+    "title": "Production deployment",
+    "description": "Deploying v1.0.0"
+  }
+}
+```
 
 **Tool Annotations:**
-All tools include semantic annotations (`readOnlyHint`, `destructiveHint`, `idempotentHint`) to help MCP clients understand their behavior and safety characteristics.
+All tools include semantic annotations (`destructiveHint`, `idempotentHint`, `openWorldHint`) to help MCP clients understand their behavior and safety characteristics.
 
 For detailed schemas, parameters, and usage examples, see **[TOOLS.md](TOOLS.md)**.
 
@@ -430,6 +472,7 @@ You can control which tools are loaded by the MCP server using the `DOKPLOY_ENAB
 ```
 
 **Available consolidated tool names:**
+
 - `dokploy_application` - Application and domain management
 - `dokploy_postgres` - PostgreSQL database management
 - `dokploy_mysql` - MySQL database management
@@ -460,6 +503,7 @@ You can lock an MCP instance to a specific project using the `DOKPLOY_LOCKED_PRO
 ```
 
 **When project locking is enabled:**
+
 - The server validates the project exists on startup and fails if the project is not found
 - All operations are restricted to the locked project
 - Attempts to access different projects are automatically rejected with an error
@@ -467,6 +511,7 @@ You can lock an MCP instance to a specific project using the `DOKPLOY_LOCKED_PRO
 - The `projectId` parameter is automatically injected into operations when not provided
 
 **Use cases:**
+
 - **Multi-tenant setups**: Run multiple MCP instances, each locked to a different project/tenant
 - **Security**: Prevent accidental operations on wrong projects
 - **Isolation**: Create dedicated MCP instances for different teams or environments
@@ -496,9 +541,12 @@ This configuration creates an MCP instance that only loads application and Postg
 
 Built with **@modelcontextprotocol/sdk**, **TypeScript**, and **Zod** for type-safe schema validation:
 
-- **67 Tools** covering projects, applications, domains, PostgreSQL, and MySQL management
+- **4 Consolidated Tools** covering all 67+ operations for projects, applications, domains, PostgreSQL, and MySQL
+- **Bun Optimized**: High-performance runtime with optimized builds
 - **Multiple Transports**: Stdio (default) and HTTP (Streamable HTTP + legacy SSE)
 - **Multiple Git Providers**: GitHub, GitLab, Bitbucket, Gitea, custom Git
+- **Project Locking**: Built-in isolation for multi-tenant setups
+- **Tool Filtering**: Selective loading for specialized MCP instances
 - **Robust Error Handling**: Centralized API client with retry logic
 - **Type Safety**: Full TypeScript support with Zod schema validation
 - **Tool Annotations**: Semantic hints for MCP client behavior understanding
@@ -510,13 +558,13 @@ Clone the project and install dependencies:
 ```bash
 git clone https://github.com/Dokploy/mcp.git
 cd dokploy-mcp
-npm install
+bun install
 ```
 
 Build:
 
 ```bash
-npm run build
+bun run build
 ```
 
 ### Local Configuration Example
@@ -525,7 +573,7 @@ npm run build
 {
   "mcpServers": {
     "dokploy-mcp": {
-      "command": "npx",
+      "command": "bunx",
       "args": ["tsx", "/path/to/dokploy-mcp/src/index.ts"],
       "env": {
         "DOKPLOY_URL": "https://your-dokploy-server.com/api",
@@ -539,7 +587,7 @@ npm run build
 ### Testing with MCP Inspector
 
 ```bash
-npx -y @modelcontextprotocol/inspector npx @ahdev/dokploy-mcp
+npx -y @modelcontextprotocol/inspector bunx @ahdev/dokploy-mcp
 ```
 
 ### Documentation
@@ -553,9 +601,21 @@ npx -y @modelcontextprotocol/inspector npx @ahdev/dokploy-mcp
 
 1. Try adding `@latest` to the package name.
 
-2. Make sure you are using Node v18 or higher to have native fetch support with `npx`.
+2. Use **Bun** for the best performance: `bunx -y @ahdev/dokploy-mcp@latest`
 
-3. Verify your `DOKPLOY_URL` and `DOKPLOY_API_KEY` environment variables are correctly set.
+3. For Node.js environments: `npx -y @ahdev/dokploy-mcp@latest`
+
+4. Verify your `DOKPLOY_URL` and `DOKPLOY_API_KEY` environment variables are correctly set.
+
+5. For consolidated tools, make sure to use the new format:
+
+   ```json
+   {
+     "tool": "dokploy_application",
+     "action": "deploy",
+     "params": { "applicationId": "your-app-id" }
+   }
+   ```
 
 ## 🤝 Contributing
 
