@@ -271,8 +271,15 @@ The configuration on Windows is slightly different compared to Linux or macOS. U
 
 ### Environment Variables
 
+#### Required
+
 - `DOKPLOY_URL`: Your Dokploy server API URL (required)
 - `DOKPLOY_API_KEY`: Your Dokploy API authentication token (required)
+
+#### Optional - Tool and Project Scope Control
+
+- `DOKPLOY_ENABLED_TOOLS`: Comma-separated list of consolidated tools to enable (e.g., `dokploy_application,dokploy_postgres`). If not set or empty, all tools will be loaded. Available tools: `dokploy_application`, `dokploy_postgres`, `dokploy_mysql`, `dokploy_project`.
+- `DOKPLOY_LOCKED_PROJECT_ID`: Lock the MCP instance to a specific project ID. When set, all operations will be restricted to this project, and the server will validate the project exists on startup. Any attempts to access different projects will be rejected.
 
 ## 🚀 Transport Modes
 
@@ -397,6 +404,93 @@ This MCP server provides **67 tools** organized into five main categories:
 All tools include semantic annotations (`readOnlyHint`, `destructiveHint`, `idempotentHint`) to help MCP clients understand their behavior and safety characteristics.
 
 For detailed schemas, parameters, and usage examples, see **[TOOLS.md](TOOLS.md)**.
+
+## ⚙️ Advanced Configuration
+
+### Tool Filtering
+
+You can control which tools are loaded by the MCP server using the `DOKPLOY_ENABLED_TOOLS` environment variable. This is useful for creating specialized MCP instances that only handle specific operations.
+
+**Example: Only load application and PostgreSQL tools**
+
+```json
+{
+  "mcpServers": {
+    "dokploy-mcp": {
+      "command": "npx",
+      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "env": {
+        "DOKPLOY_URL": "https://your-dokploy-server.com/api",
+        "DOKPLOY_API_KEY": "your-dokploy-api-token",
+        "DOKPLOY_ENABLED_TOOLS": "dokploy_application,dokploy_postgres"
+      }
+    }
+  }
+}
+```
+
+**Available consolidated tool names:**
+- `dokploy_application` - Application and domain management
+- `dokploy_postgres` - PostgreSQL database management
+- `dokploy_mysql` - MySQL database management
+- `dokploy_project` - Project management
+
+If `DOKPLOY_ENABLED_TOOLS` is not set or is empty, all tools will be loaded.
+
+### Project Locking
+
+You can lock an MCP instance to a specific project using the `DOKPLOY_LOCKED_PROJECT_ID` environment variable. This ensures that all operations are restricted to a single project, providing isolation and security.
+
+**Example: Lock to a specific project**
+
+```json
+{
+  "mcpServers": {
+    "dokploy-mcp-project-a": {
+      "command": "npx",
+      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "env": {
+        "DOKPLOY_URL": "https://your-dokploy-server.com/api",
+        "DOKPLOY_API_KEY": "your-dokploy-api-token",
+        "DOKPLOY_LOCKED_PROJECT_ID": "project-a-id"
+      }
+    }
+  }
+}
+```
+
+**When project locking is enabled:**
+- The server validates the project exists on startup and fails if the project is not found
+- All operations are restricted to the locked project
+- Attempts to access different projects are automatically rejected with an error
+- Environment IDs are validated to ensure they belong to the locked project
+- The `projectId` parameter is automatically injected into operations when not provided
+
+**Use cases:**
+- **Multi-tenant setups**: Run multiple MCP instances, each locked to a different project/tenant
+- **Security**: Prevent accidental operations on wrong projects
+- **Isolation**: Create dedicated MCP instances for different teams or environments
+
+**Combining tool filtering and project locking:**
+
+```json
+{
+  "mcpServers": {
+    "dokploy-mcp-team-backend": {
+      "command": "npx",
+      "args": ["-y", "@ahdev/dokploy-mcp"],
+      "env": {
+        "DOKPLOY_URL": "https://your-dokploy-server.com/api",
+        "DOKPLOY_API_KEY": "your-dokploy-api-token",
+        "DOKPLOY_ENABLED_TOOLS": "dokploy_application,dokploy_postgres",
+        "DOKPLOY_LOCKED_PROJECT_ID": "backend-project-id"
+      }
+    }
+  }
+}
+```
+
+This configuration creates an MCP instance that only loads application and PostgreSQL tools and restricts all operations to the backend project.
 
 ## 🏗️ Architecture
 

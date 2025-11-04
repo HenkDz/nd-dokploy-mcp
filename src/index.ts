@@ -3,10 +3,21 @@
 import { StdioServerTransport } from "@modelcontextprotocol/sdk/server/stdio.js";
 import { createServer } from "./server.js";
 import { createLogger } from "./utils/logger.js";
+import { validateLockedProject } from "./utils/projectLock.js";
 
 const logger = createLogger("MCP-Entry");
 
 async function main() {
+  // Validate locked project if DOKPLOY_LOCKED_PROJECT_ID is set
+  try {
+    await validateLockedProject();
+  } catch (error) {
+    logger.error("Failed to validate locked project", {
+      error: error instanceof Error ? error.message : "Unknown error",
+    });
+    process.exit(1);
+  }
+
   // Check if running in HTTP mode
   const args = process.argv.slice(2);
   const httpMode =
