@@ -4,12 +4,23 @@ import { createTool } from "../toolFactory.js";
 import { ResponseFormatter } from "../../../utils/responseFormatter.js";
 
 export const applicationOne = createTool({
-  name: "application-one",
-  description: "Gets a specific application by its ID in Dokploy.",
+  name: "application-one", 
+  description: "Gets detailed information about a specific application in Dokploy.\n\n" +
+    "REQUIRED PARAMETERS:\n" +
+    "• applicationId: The unique identifier of the application to retrieve\n\n" +
+    "USAGE EXAMPLES:\n" +
+    '• Get application: {"applicationId": "app-123"}\n' +
+    '• Note: Use dokploy_application tool with {"action": "get", "params": {"applicationId": "app-123"}} for better functionality\n\n' +
+    "RESPONSE: Returns comprehensive application details including status, configuration, and metadata.",
   schema: z.object({
     applicationId: z
       .string()
-      .describe("The ID of the application to retrieve."),
+      .min(1, "applicationId is required and cannot be empty")
+      .describe(
+        "The unique ID of the application to retrieve. " +
+        "This is typically a string like 'app-123', 'application-456', etc. " +
+        "Find this ID in your Dokploy dashboard or by listing applications first."
+      ),
   }),
   annotations: {
     title: "Get Application Details",

@@ -27,7 +27,7 @@ export const dokployPostgres = createTool({
       .enum([
         "create",
         "remove",
-        "deploy",
+        "deploy", 
         "start",
         "stop",
         "update",
@@ -40,13 +40,36 @@ export const dokployPostgres = createTool({
         "saveExternalPort",
       ])
       .describe(
-        "The action to perform on the PostgreSQL database: create, remove, deploy, start, stop, update, get, rebuild, reload, move, changeStatus, saveEnvironment, saveExternalPort"
+        `The action to perform on PostgreSQL databases.\n\n` +
+        `• create: Create new PostgreSQL database (requires: name, appName, databaseName, databaseUser, databasePassword, environmentId)\n` +
+        `• get: Get database details (requires: postgresId)\n` +
+        `• update: Update database config (requires: postgresId)\n` +
+        `• remove: Delete database (requires: postgresId)\n` +
+        `• deploy: Deploy database (requires: postgresId)\n` +
+        `• start/stop: Start/stop database (requires: postgresId)\n` +
+        `• rebuild: Rebuild database (requires: postgresId)\n` +
+        `• reload: Reload database (requires: postgresId)\n` +
+        `• move: Move to different environment (requires: postgresId, environmentId)\n` +
+        `• changeStatus: Change database status (requires: postgresId, applicationStatus)\n` +
+        `• saveEnvironment: Save env variables (requires: postgresId)\n` +
+        `• saveExternalPort: Configure external port (requires: postgresId, externalPort)`
       ),
     params: z
       .record(z.any())
       .optional()
       .describe(
-        "Parameters for the action. The required parameters vary by action. See individual tool documentation for details."
+        `Parameters for the specified action.\n\n` +
+        `COMMON PARAMETERS:\n` +
+        `• postgresId: The unique identifier of the PostgreSQL database (required for most operations)\n` +
+        `• name: Database display name (required for create)\n` +
+        `• appName: Application name (required for create)\n` +
+        `• databaseName: Database name (required for create)\n` +
+        `• databaseUser: Database username (required for create)\n` +
+        `• databasePassword: Database password (required for create)\n` +
+        `• environmentId: Environment ID (required for create, move)\n\n` +
+        `EXAMPLE USAGE:\n` +
+        `Create DB: {"action": "create", "params": {"name": "Prod DB", "appName": "myapp", "databaseName": "mydb", "databaseUser": "user", "databasePassword": "pass", "environmentId": "env-123"}}\n` +
+        `Get DB: {"action": "get", "params": {"postgresId": "pg-123"}}`
       ),
   }),
   annotations: {

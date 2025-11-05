@@ -40,13 +40,37 @@ export const dokployMysql = createTool({
         "saveExternalPort",
       ])
       .describe(
-        "The action to perform on the MySQL database: create, remove, deploy, start, stop, update, get, rebuild, reload, move, changeStatus, saveEnvironment, saveExternalPort"
+        `The action to perform on MySQL databases.\n\n` +
+        `• create: Create new MySQL database (requires: name, appName, databaseName, databaseUser, databasePassword, databaseRootPassword, environmentId)\n` +
+        `• get: Get database details (requires: mysqlId)\n` +
+        `• update: Update database config (requires: mysqlId)\n` +
+        `• remove: Delete database (requires: mysqlId)\n` +
+        `• deploy: Deploy database (requires: mysqlId)\n` +
+        `• start/stop: Start/stop database (requires: mysqlId)\n` +
+        `• rebuild: Rebuild database (requires: mysqlId)\n` +
+        `• reload: Reload database (requires: mysqlId)\n` +
+        `• move: Move to different environment (requires: mysqlId, environmentId)\n` +
+        `• changeStatus: Change database status (requires: mysqlId, applicationStatus)\n` +
+        `• saveEnvironment: Save env variables (requires: mysqlId)\n` +
+        `• saveExternalPort: Configure external port (requires: mysqlId, externalPort)`
       ),
     params: z
       .record(z.any())
       .optional()
       .describe(
-        "Parameters for the action. The required parameters vary by action. See individual tool documentation for details."
+        `Parameters for the specified action.\n\n` +
+        `COMMON PARAMETERS:\n` +
+        `• mysqlId: The unique identifier of the MySQL database (required for most operations)\n` +
+        `• name: Database display name (required for create)\n` +
+        `• appName: Application name (required for create)\n` +
+        `• databaseName: Database name (required for create)\n` +
+        `• databaseUser: Database username (required for create)\n` +
+        `• databasePassword: Database user password (required for create)\n` +
+        `• databaseRootPassword: Database root password (required for create)\n` +
+        `• environmentId: Environment ID (required for create, move)\n\n` +
+        `EXAMPLE USAGE:\n` +
+        `Create MySQL: {"action": "create", "params": {"name": "MySQL DB", "appName": "myapp", "databaseName": "mydb", "databaseUser": "user", "databasePassword": "userpass", "databaseRootPassword": "rootpass", "environmentId": "env-123"}}\n` +
+        `Get MySQL: {"action": "get", "params": {"mysqlId": "mysql-123"}}`
       ),
   }),
   annotations: {

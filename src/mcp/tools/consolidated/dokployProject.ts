@@ -19,13 +19,27 @@ export const dokployProject = createTool({
     action: z
       .enum(["list", "create", "get", "update", "remove", "duplicate"])
       .describe(
-        "The action to perform on the project: list (all projects), create, get (specific project), update, remove, duplicate"
+        `The action to perform on projects. Required for all operations.\n\n` +
+        `• list: List all projects (no parameters required)\n` +
+        `• get: Get specific project details (requires: projectId)\n` +
+        `• create: Create new project (requires: name)\n` +
+        `• update: Update project config (requires: projectId)\n` +
+        `• remove: Delete project (requires: projectId)\n` +
+        `• duplicate: Duplicate existing project (requires: sourceProjectId, name)`
       ),
     params: z
       .record(z.any())
       .optional()
       .describe(
-        "Parameters for the action. The required parameters vary by action. See individual tool documentation for details."
+        `Parameters for the specified action.\n\n` +
+        `COMMON PARAMETERS:\n` +
+        `• projectId: The unique identifier of the project (required for get, update, remove, duplicate)\n` +
+        `• name: Project name (required for create, duplicate)\n` +
+        `• sourceProjectId: Source project to duplicate from (required for duplicate)\n\n` +
+        `EXAMPLE USAGE:\n` +
+        `List all projects: {"action": "list", "params": {}}\n` +
+        `Get project: {"action": "get", "params": {"projectId": "proj-123"}}\n` +
+        `Create project: {"action": "create", "params": {"name": "My Project"}}`
       ),
   }),
   annotations: {

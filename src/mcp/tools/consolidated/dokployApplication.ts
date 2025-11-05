@@ -50,7 +50,7 @@ export const dokployApplication = createTool({
     action: z
       .enum([
         "create",
-        "delete",
+        "delete", 
         "deploy",
         "start",
         "stop",
@@ -86,14 +86,40 @@ export const dokployApplication = createTool({
         "domainValidate",
       ])
       .describe(
-        "The action to perform. Application actions: create, delete, deploy, start, stop, update, get, redeploy, reload, move, cancelDeployment, cleanQueues, disconnectGitProvider, markRunning, readAppMonitoring, readTraefikConfig, refreshToken, saveBitbucketProvider, saveBuildType, saveDockerProvider, saveEnvironment, saveGitProvider, saveGiteaProvider, saveGithubProvider, saveGitlabProvider, updateTraefikConfig. Domain actions: domainCreate, domainDelete, domainUpdate, domainGet, domainByApplicationId, domainByComposeId, domainGenerateDomain, domainCanGenerateTraefikMeDomains, domainValidate"
+        `The action to perform. Required for all operations.\n\n` +
+        `APPLICATION ACTIONS:\n` +
+        `• create: Creates new application (requires: name, environmentId)\n` +
+        `• get: Gets application details (requires: applicationId)\n` +
+        `• update: Updates application config (requires: applicationId)\n` +
+        `• delete: Deletes application (requires: applicationId)\n` +
+        `• deploy: Deploys application (requires: applicationId)\n` +
+        `• start/stop: Start/stop application (requires: applicationId)\n` +
+        `• redeploy: Redeploys application (requires: applicationId)\n` +
+        `• reload: Reloads application (requires: applicationId)\n` +
+        `• move: Move to different environment (requires: applicationId, environmentId)\n` +
+        `• cancelDeployment: Cancel ongoing deployment (requires: applicationId)\n` +
+        `• cleanQueues: Clean deployment queues (requires: applicationId)\n` +
+        `• refreshToken: Refresh access token (requires: applicationId)\n\n` +
+        `DOMAIN ACTIONS:\n` +
+        `• domainCreate: Create domain (requires: host, applicationId OR composeId)\n` +
+        `• domainGet: Get domain details (requires: domainId)\n` +
+        `• domainByApplicationId: List domains for app (requires: applicationId)\n` +
+        `• domainByComposeId: List domains for compose (requires: composeId)`
       ),
-    // Make parameters optional so they can be passed based on the action
     params: z
       .record(z.any())
       .optional()
       .describe(
-        "Parameters for the action. The required parameters vary by action. See individual tool documentation for details."
+        `Parameters for the specified action. Required for all actions except list-type operations.\n\n` +
+        `COMMON REQUIRED PARAMETERS:\n` +
+        `• applicationId: The unique identifier of the application (required for get, update, delete, deploy, start, stop, etc.)\n` +
+        `• name: Application name (required for create)\n` +
+        `• environmentId: Environment ID where app operates (required for create, move)\n` +
+        `• host: Domain hostname (required for domainCreate)\n\n` +
+        `EXAMPLE USAGE:\n` +
+        `Get application: {"action": "get", "params": {"applicationId": "app-123"}}\n` +
+        `Create app: {"action": "create", "params": {"name": "My App", "environmentId": "env-456"}}\n` +
+        `Deploy app: {"action": "deploy", "params": {"applicationId": "app-123"}}`
       ),
   }),
   annotations: {
